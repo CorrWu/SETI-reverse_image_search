@@ -19,7 +19,7 @@ model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3
 
 ## Generating Input Data
 The variable `interval` is the difference between the starting point (`f_start`) and the stopping point (`f_stop`) of each image. The variable `step` is the difference between the starting points (`f_start`) of each image. Both variables can be changed if needed.
-I set the `interval` to a small number (256 * 2.79e-6) to improve the efficiency of the program. The variable `step` can be set to a smaller number to get more accurate result.
+I set the `interval` to a small number (256 * 2.79e-6) to improve the efficiency of the program. The variable `step` can be set to a smaller number to get more accurate result.  
 ![Screen Shot 2022-12-04 at 16 32 15](https://user-images.githubusercontent.com/67254464/205525951-5ca9a7eb-44fc-4c1e-ab40-371bea66059d.png)  
 I used `skimage.transform.resize` to resize each interval of frequency to the shape of (1, 224, 224, 3), which is the shape ResNet50 uses. The resulting `data_list` is a list of arrays with the shape. Each array is perceived as an image when passed in the feature extraction function. They are compared with each other to find the nearest neighbor among them. 
 ```
